@@ -1,38 +1,61 @@
-<form>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label>Nombre completo</label>
-        <input type="email" class="form-control">
+        <input type="text" formControlName="nombre" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }">
+        <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+            <div *ngIf="f.nombre.errors.required">El nombre es requerido</div>
+        </div>
     </div>
     <div class="form-group">
         <label>Nombre de la empresa</label>
-        <input type="email" class="form-control">
+        <input type="text" formControlName="empresa" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.empresa.errors }">
+        <div *ngIf="submitted && f.empresa.errors" class="invalid-feedback">
+            <div *ngIf="f.empresa.errors.required">El nombre de la empresa es requerido</div>
+        </div>
     </div>
     <div class="form-group">
         <label>Correo electrónico</label>
-        <input type="email" class="form-control">
+        <input type="email" formControlName="correo" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.correo.errors }">
+        <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
+            <div *ngIf="f.correo.errors.required">El correo electrónico es requerido</div>
+        </div>
     </div>
 
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
                 <label>Teléfono</label>
-                <input type="email" class="form-control">
-
+                <input type="text" formControlName="telefono" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }">
+                <div *ngIf="submitted && f.telefono.errors" class="invalid-feedback">
+                    <div *ngIf="f.telefono.errors.required">El número de teléfono es requerido</div>
+                </div>
             </div>
         </div>
         <div class="col-sm-6">
             <div class="form-group">
                 <label>Categoría</label>
-                <select class="custom-select">
+                <select class="custom-select" formControlName="categoria"
+                    [ngClass]="{ 'is-invalid': submitted && f.categoria.errors }">
                     <option value={{item.nombre}} *ngFor="let item of categorias">{{item.nombre}}</option>
                 </select>
+                <div *ngIf="submitted && f.categoria.errors" class="invalid-feedback">
+                    <div *ngIf="f.categoria.errors.required">La categoría es requerida</div>
+                </div>
             </div>
 
         </div>
     </div>
     <div class="form-group">
         <label>Mensaje</label>
-        <textarea class="form-control form_textarea" placeholder="Escriba su mensaje" rows="3"></textarea>
+        <textarea formControlName="mensaje" [ngClass]="{ 'is-invalid': submitted && f.mensaje.errors }"
+            class="form-control form_textarea" placeholder="Escriba su mensaje" rows="3"></textarea>
+        <div *ngIf="submitted && f.mensaje.errors" class="invalid-feedback">
+            <div *ngIf="f.mensaje.errors.required">El mensaje es requerido</div>
+        </div>
     </div>
     <button type="submit" class="btn btn_form_send"><i class="bi bi-send"></i> Enviar</button>
 
