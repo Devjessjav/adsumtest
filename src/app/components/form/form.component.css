@@ -1,0 +1,8 @@
+.form_textarea{
+    resize: none;
+}
+
+.btn_form_send {
+    background-color:#a4d05b;
+    color: #ffff
+}

@@ -1,0 +1,39 @@
+<form>
+    <div class="form-group">
+        <label>Nombre completo</label>
+        <input type="email" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Nombre de la empresa</label>
+        <input type="email" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="email" class="form-control">
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="email" class="form-control">
+
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Categoría</label>
+                <select class="custom-select">
+                    <option value={{item.nombre}} *ngFor="let item of categorias">{{item.nombre}}</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Mensaje</label>
+        <textarea class="form-control form_textarea" placeholder="Escriba su mensaje" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn_form_send"><i class="bi bi-send"></i> Enviar</button>
+
+</form>
