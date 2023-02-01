@@ -1,0 +1,11 @@
+.header_background{
+    background-color: #b3e31b;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header_title{
+    color: #fff;
+}
