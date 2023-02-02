@@ -8,8 +8,6 @@ export class ApiService {
     constructor(private http: HttpClient) { }
 
     addComment(form) {
-        console.log('enviado', this.apiUrl)
-        console.log('enviado From', form)
         return this.http.post(this.apiUrl, form);
     }
 }
