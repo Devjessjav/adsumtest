@@ -1,5 +1,9 @@
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+// Services
+import {ApiService} from '../../service/apiService'
+// sweetAlert
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-form',
@@ -26,7 +30,7 @@ export class FormComponent implements OnInit {
   form: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private ApiService: ApiService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group(
@@ -50,7 +54,23 @@ export class FormComponent implements OnInit {
     this.submitted = true;
     console.log(JSON.stringify(this.form.value, null, 2));
     if (this.form.invalid) {
-      return;
+      Swal.fire({
+        icon: 'warning',
+        title: 'Por favor completa todos los campos requeridos.',
+      })
+    } else {
+      console.log('Valido')
+      //this.ApiService.addComment(this.form.value)
+      this.ApiService.addComment(this.form.value).subscribe(
+        comment => {
+          console.log(comment);
+          Swal.fire({
+            icon: 'success',
+            title: 'Post exitoso',
+          })
+        }
+    );
+    this.onReset()
     }
   }
 
